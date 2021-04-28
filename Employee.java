@@ -1,32 +1,56 @@
+import java.util.*;
+
 public class Employee {
-    int salary;
-    int hours ;
+    private float hours, salary;
 
-    Employee(int salary, int hours) {
-        this.salary = salary;
-        this.hours = salary;
-    }
-    void getInfo(int salary, int hours){
-        System.out.println("Initial salary: 300");
-        System.out.println("Number of hours of work per day: 3");
+    public Employee() {
+        salary = 0;
+        hours = 0;
     }
 
-    void AddSal() {
-        if (this.salary < 500) {
-            System.out.println("New salary taking the initial salary into consideration: " + (10 + salary));
+    public void getInfo(float sal, float hr) {
+        sal = salary;
+        hr = hours;
+    }
+
+    public float AddSal() {
+        if (salary < 500) {
+            salary = 500 + 10;
         }
+        return salary;
     }
 
-    void AddWork() {
-        if (this.hours > 6) {
-            System.out.println("New salary taking the hours into consideration: "+ (5 + salary));
+    public float AddWork() {
+        if (hours > 6) {
+            salary = 500 + 5;
         }
-    }
-
-    public static void main(String[] args) {
-        Employee finalSalary = new Employee(300, 3);
-        finalSalary.getInfo(300,3);
-        finalSalary.AddSal();
-        finalSalary.AddWork();
+        return salary;
     }
 }
+    class TestEmployee{
+        float salary;
+        public TestEmployee(float sal){
+            salary = sal;
+        }
+        public void printsal(){
+            System.out.println("Salary : " + salary);
+        }
+    }
+
+    class Employ{
+        public static void main(String[] args) {
+            Employee emp = new Employee();
+
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Salary");
+            float salary = sc.nextFloat();
+            System.out.println("Enter no. of hours of work");
+            float hours = sc.nextFloat();
+            emp.getInfo(salary, hours);
+            salary = emp.AddSal();
+            hours = emp.AddWork();
+            TestEmployee test = new TestEmployee(salary);
+            test.printsal();
+        }
+    }
+
